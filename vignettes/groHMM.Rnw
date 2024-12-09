@@ -471,7 +471,7 @@ lib.size <- c(NROW(S0mR1), NROW(S0mR2), NROW(S40mR1), NROW(S40mR2))
 d <- DGEList(counts=pcounts, lib.size=lib.size, group=group)
 d <- estimateCommonDisp(d)
 et <- exactTest(d)
-de <- decideTestsDGE(et, p=0.001, adjust="fdr")
+de <- decideTests(et, p=0.001, adjust="fdr")
 detags <- seq_len(NROW(d))[as.logical(de)]
 # Number of transcripts regulated at 40m
 cat("up: ",sum(de==1), " down: ", sum(de==-1), "\n")
@@ -520,7 +520,7 @@ d <- DGEList(counts=counts, lib.size=lib.size, group=group)
 
 d <- estimateCommonDisp(d)
 et <- exactTest(d)
-de <- decideTestsDGE(et, p=0.001, adjust="fdr")
+de <- decideTests(et, p=0.001, adjust="fdr")
 detags <- seq_len(NROW(d))[as.logical(de)]
 symbols <- mcols(kgChr7)$symbol
 # Number of unique genes regulated at 40m
