@@ -38,10 +38,10 @@ To change the number of processors, use the argument 'mc.cores'.
 }
 \examples{
 features <- GRanges("chr7", IRanges(2394474,2420377), strand="+")
- reads <- as(readGAlignments(system.file("extdata", "S0mR1.bam",
-             package="groHMM")), "GRanges")
- ## Not run:
- # pi <- pausingIndex(features, reads)
+reads <- as(readGAlignments(system.file("extdata", "S0mR1.bam",
+            package="groHMM")), "GRanges")
+## Not run:
+# pi <- pausingIndex(features, reads)
 }
 \author{
 Charles G. Danko and Minho Chae.

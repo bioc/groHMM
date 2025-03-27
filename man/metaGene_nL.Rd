@@ -27,6 +27,12 @@ different length.
 Supports parallel processing using mclapply in the 'parallel' package.
 To change the number of processors, use the argument 'mc.cores'.
 }
+\examples{
+features <- GRanges("chr7", IRanges(1000, 1100), strand = "+")
+reads <- GRanges("chr7", IRanges(start = c(1000:1004, 1100),
+                                 width = rep(1, 6)), strand="+")
+metaGene_nL(features, reads, n_windows=5)
+}
 \author{
 Charles G. Danko and Minho Chae
 }

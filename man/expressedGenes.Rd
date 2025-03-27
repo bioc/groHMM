@@ -35,6 +35,15 @@ features of interest.
 Supports parallel processing using mclapply in the 'parallel' package.
 To change the number of processors use the argument 'mc.cores'.
 }
+\examples{
+features <- GRanges("chr7", IRanges(2394474, 2420377), strand = "+",
+                    ID = "gene1")
+reads <-
+    system.file("extdata", "S0mR1.bam", package = "groHMM") |>
+    readGAlignments() |>
+    as("GRanges")
+expressedGenes(features, reads)
+}
 \author{
 Charles G. Danko
 }

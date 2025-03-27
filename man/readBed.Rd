@@ -23,6 +23,10 @@ Three column format is also possible when there is no strand information.
 \details{
 Any additional arguments availiable to read.table can be specified.
 }
+\examples{
+fileBed <- system.file(package = "rtracklayer", "tests", "test.bed")
+readBed(fileBed, skip = 2, colClasses = c(rep(NA, 6), rep("NULL", 6)))
+}
 \author{
 Minho Chae and Charles G. Danko.
 }

@@ -181,6 +181,9 @@ countMappableReadsInInterval_foreachChrom <- function(i, C, features, UnMap) {
 #' @param ... Extra argument passed to read.table
 #' @return Returns GRanges object representing mapped reads.
 #' @author Minho Chae and Charles G. Danko.
+#' @examples
+#' fileBed <- system.file(package = "rtracklayer", "tests", "test.bed")
+#' readBed(fileBed, skip = 2, colClasses = c(rep(NA, 6), rep("NULL", 6)))
 readBed <- function(file, ...) {
     df <- read.table(file, ...)
         if(NCOL(df) == 3) {

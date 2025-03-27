@@ -42,6 +42,14 @@
 #' @return Returns a data.frame representing the expression p.values for 
 #' features of interest.
 #' @author Charles G. Danko 
+#' @examples
+#' features <- GRanges("chr7", IRanges(2394474, 2420377), strand = "+",
+#'                     ID = "gene1")
+#' reads <-
+#'     system.file("extdata", "S0mR1.bam", package = "groHMM") |>
+#'     readGAlignments() |>
+#'     as("GRanges")
+#' expressedGenes(features, reads)
 ##  This identifes genes that are expressed in a given cell, based on short 
 ##  read data.
 ##      f  == genes/annotations; columns represent: Chr, Start, End, Strand, ID.

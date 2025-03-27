@@ -309,6 +309,11 @@ metaGeneMatrix_foreachChrom <- function(i, C, features, reads, size, up, down,
 #' @return Returns a vector representing the 'typical' signal across genes of 
 #' different length.
 #' @author Charles G. Danko and Minho Chae
+#' @examples
+#' features <- GRanges("chr7", IRanges(1000, 1100), strand = "+")
+#' reads <- GRanges("chr7", IRanges(start = c(1000:1004, 1100),
+#'                                  width = rep(1, 6)), strand="+")
+#' metaGene_nL(features, reads, n_windows=5)
 ##  Returns a histogram of the number of reads in each section of a
 ##  moving window of variable size across genes.
 ##
