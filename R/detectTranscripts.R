@@ -20,39 +20,39 @@
 ##########################################################################
 
 
-#' detectTranscripts detects transcripts de novo using a two-state hidden 
+#' detectTranscripts detects transcripts de novo using a two-state hidden
 #' Markov model (HMM).
 #'
-#' Read counts can be specified as either a GRanges object (reads), or using a 
-#' fixed-step wiggle-format passed in a list (Fp and Fm).  
+#' Read counts can be specified as either a GRanges object (reads), or using a
+#' fixed-step wiggle-format passed in a list (Fp and Fm).
 #' Either reads or BOTH Fp and Fm must be specified.
 #'
-#' Supports parallel processing using mclapply in the 'parallel' package.  
+#' Supports parallel processing using mclapply in the 'parallel' package.
 #' To change the number of processors set the option 'mc.cores'.
 #'
-#'  Reference: Hah N, Danko CG, Core L, Waterfall JJ, Siepel A, Lis JT, 
-#' Kraus WL. A rapid, extensive, and transient transcriptional response to 
-#' estrogen signaling in breast cancer cells. Cell. 2011 May 13;145(4):622-34. 
-#' doi: 10.1016/j.cell.2011.03.042. 
+#' Reference: Hah N, Danko CG, Core L, Waterfall JJ, Siepel A, Lis JT,
+#' Kraus WL. A rapid, extensive, and transient transcriptional response to
+#' estrogen signaling in breast cancer cells. Cell. 2011 May 13;145(4):622-34.
+#' doi: 10.1016/j.cell.2011.03.042.
 #'
 #' @param reads A GRanges object representing a set of mapped reads.
-#' @param Fp Wiggle-formatted read counts on "+" strand. Optionally, Fp and Fm 
-#' represent list() filled with a vector of counts for each chromosome.  
+#' @param Fp Wiggle-formatted read counts on "+" strand. Optionally, Fp and Fm
+#' represent list() filled with a vector of counts for each chromosome.
 #' Can detect transcripts starting from a fixed-step wiggle.
-#' @param Fm Wiggle-formatted read counts on "-" strand. 
-#' @param LtProbA Log probability of t... .  Default: -5. One of these is just 
+#' @param Fm Wiggle-formatted read counts on "-" strand.
+#' @param LtProbA Log probability of t... .  Default: -5. One of these is just
 #' an initialization, and the final value is set by EM.  The other is a holdout
 #' parameter.
 #' @param LtProbB Log probability of t... .  Default: -200.
-#' @param UTS Varience in read counts of the untranscribed sequence.  
+#' @param UTS Varience in read counts of the untranscribed sequence.
 #' Default: 5.
 #' @param size Log probability of t... .  Default: -5.
 #' @param threshold Threshold change in total likelihood, below which EM exits.
-#' @param debug If set to TRUE, provides additional print options. 
+#' @param debug If set to TRUE, provides additional print options.
 #' Default: FALSE
 #' @param ... Extra argument passed to mclapply
-#' @return Returns a list of emisParams, trnasParams, viterbiStates, and 
-#' transcripts.  The transcript element is a GRanges object representing the 
+#' @return Returns a list of emisParams, trnasParams, viterbiStates, and
+#' transcripts.  The transcript element is a GRanges object representing the
 #' predicted genomic coordinates of transcripts on both the + and - strand.
 #' @author Charles G. Danko and Minho Chae
 #' @examples

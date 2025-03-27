@@ -38,3 +38,4 @@ BugReports: https://github.com/Kraus-Lab/groHMM/issues
 License: GPL-3
 biocViews: Sequencing, Software
 LazyLoad: yes
+RoxygenNote: 7.3.2

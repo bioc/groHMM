@@ -71,28 +71,28 @@ breakInterval <- function(gr, brPos, gap=5, strand="+") {
 }
 
 
-#' breakTranscriptsOnGenes Breaks transcripts on genes 
+#' breakTranscriptsOnGenes Breaks transcripts on genes
 #'
-#' Breaks transcripts when they are overlapped with multiple well annotated 
+#' Breaks transcripts when they are overlapped with multiple well annotated
 #' genes.
 #'
 #' @param tx GRanges of transcripts.
 #' @param annox GRanges of non-overlapping annotations for reference.
 #' @param strand Takes "+" or "-" Default: "+"
-#' @param geneSize Numeric. Minimum gene size in annox to be used as reference. 
+#' @param geneSize Numeric. Minimum gene size in annox to be used as reference.
 #' Default: 5000
-#' @param threshold Numeric. Ratio of overlapped region relative to a gene 
-#' width. 
-#' Transcripts only greater than this threshold are subjected to be broken. 
+#' @param threshold Numeric. Ratio of overlapped region relative to a gene
+#' width.
+#' Transcripts only greater than this threshold are subjected to be broken.
 #' Default: 0.8
 #' @param gap Numeric.  Gap (bp) between broken transcripts.  Default: 5
-#' @param plot Logical.  If set to TRUE, show each step in a plot. 
+#' @param plot Logical.  If set to TRUE, show each step in a plot.
 #' Default: FALSE
 #' @author Minho Chae and Charles G. Danko
-#' @return Returns GRanges object of broken transcripts. 
+#' @return Returns GRanges object of broken transcripts.
 #' @examples
 #' tx <- GRanges("chr7", IRanges(1000, 30000), strand="+")
-#' annox <- GRanges("chr7", IRanges(start=c(1000, 20000), 
+#' annox <- GRanges("chr7", IRanges(start=c(1000, 20000),
 #'              width=c(10000,10000)), strand="+")
 #' bPlus <- breakTranscriptsOnGenes(tx, annox, strand="+")
 breakTranscriptsOnGenes <- function(tx, annox, strand="+", geneSize=5000, 
@@ -157,27 +157,27 @@ breakTranscriptsOnGenes <- function(tx, annox, strand="+", geneSize=5000,
     return(all[order(as.character(seqnames(all)), start(all)),])
 }
 
-#' combineTranscripts Combines transnscipts. 
+#' combineTranscripts Combines transnscipts.
 #'
-#' Combines transcripts  that are within the same gene annotation, combining 
+#' Combines transcripts  that are within the same gene annotation, combining
 #' smaller transcripts for genes
 #'  with low regulation into a single transcript representing the gene.
 #'
 #' @param tx GRanges of transcripts.
 #' @param annox GRanges of non-overlapping annotations for reference.
-#' @param geneSize Numeric. Minimum gene size in annotations to be used as 
-#' reference. 
+#' @param geneSize Numeric. Minimum gene size in annotations to be used as
+#' reference.
 #' Default: 1000
 #' @param threshold Numeric. Ratio of overlapped region relative to transcript
-#' width. 
-#' Transcripts only greater than this threshold are subjected to be combined. 
+#' width.
+#' Transcripts only greater than this threshold are subjected to be combined.
 #' Default: 0.8
-#' @param plot Logical.  If set to TRUE, show easch step in a plot. 
+#' @param plot Logical.  If set to TRUE, show easch step in a plot.
 #' Default: FALSE
-#' @return Returns GRanges object of combined transcripts. 
+#' @return Returns GRanges object of combined transcripts.
 #' @author Minho Chae and Charles G. Danko
 #' @examples
-#' tx <- GRanges("chr7", IRanges(start=c(1000, 20000), width=c(10000,10000)), 
+#' tx <- GRanges("chr7", IRanges(start=c(1000, 20000), width=c(10000,10000)),
 #' strand="+")
 #' annox <- GRanges("chr7", IRanges(1000, 30000), strand="+")
 #' combined <- combineTranscripts(tx, annox)

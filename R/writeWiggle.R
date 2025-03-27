@@ -20,37 +20,37 @@
 ##########################################################################
 
 
-#' writeWiggle writes a wiggle track or BigWig file suitable for uploading 
+#' writeWiggle writes a wiggle track or BigWig file suitable for uploading
 #' to the UCSC genome browser.
 #'
-#' @param reads GenomicRanges object representing the position of reads 
+#' @param reads GenomicRanges object representing the position of reads
 #' mapping in the genome.
-#' @param file Specifies the filename for output. 
-#' @param strand Takes values of "+", "-", or "*".  Computes Writes a wiggle 
-#' on the speicified strand.  "*" denotes collapsing reads on both strands.  
+#' @param file Specifies the filename for output.
+#' @param strand Takes values of "+", "-", or "*".  Computes Writes a wiggle
+#' on the speicified strand.  "*" denotes collapsing reads on both strands.
 #' Default: "*".
 #' @param fileType Takes values of "wig" or "BigWig". Default: "wig".
 #' @param size Size of the moving window.
-#' @param normCounts A normalization factor correcting for library size 
-#' or other effects.  For example, total mappible read counts might be a 
+#' @param normCounts A normalization factor correcting for library size
+#' or other effects.  For example, total mappible read counts might be a
 #' reasonable value.  Default: 1 (i.e. no normalization).
-#' @param reverse If set to TRUE, multiplies values by -1.  
+#' @param reverse If set to TRUE, multiplies values by -1.
 #' Used for reversing GRO-seq data on the negative (-) strand. Default: FALSE
 #' @param seqinfo Seqinfo object for reads. Default: NULL.
-#' @param track.type.line If set to TRUE, prints a header identifying the 
-#' file as a wiggle.  Necessary to upload a custom track to the UCSC 
+#' @param track.type.line If set to TRUE, prints a header identifying the
+#' file as a wiggle.  Necessary to upload a custom track to the UCSC
 #' genome browser.  Default: TRUE
 #' @param ...  Extra argument passed to mclapply.
 #' @author Minho Chae and Charles G. Danko
 #' @examples
-#' S0mR1 <- as(readGAlignments(system.file("extdata", "S0mR1.bam", 
+#' S0mR1 <- as(readGAlignments(system.file("extdata", "S0mR1.bam",
 #' package="groHMM")), "GRanges")
 #' ## Not run:
-#' # writeWiggle(reads=S0mR1, file="S0mR1_Plus.wig", fileType="wig", 
+#' # writeWiggle(reads=S0mR1, file="S0mR1_Plus.wig", fileType="wig",
 #' # strand="+", reverse=FALSE)
 ## # library(GenomicRanges)
 ## # si <- seqinfo(BSgenome.Hsapiens.UCSC.hg19)
-## # writeWiggle(reads=S0mR1, file="S0mR1_Plus.wig", fileType="BigWig", 
+## # writeWiggle(reads=S0mR1, file="S0mR1_Plus.wig", fileType="BigWig",
 ## # strand="+", reverse=FALSE, seqinfo=si)
 writeWiggle <- function(reads, file, strand="*", fileType="wig", size=50, 
     normCounts=NULL, reverse=FALSE, seqinfo=NULL, track.type.line=FALSE, ...) {

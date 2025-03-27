@@ -21,27 +21,27 @@
 
 
 
-#' Function identifies expressed features using the methods introduced in 
+#' Function identifies expressed features using the methods introduced in
 #' Core, Waterfall, Lis; Science, Dec. 2008.
 #'
-#' Supports parallel processing using mclapply in the 'parallel' package.  
+#' Supports parallel processing using mclapply in the 'parallel' package.
 #' To change the number of processors use the argument 'mc.cores'.
 #'
 #' @param features A GRanges object representing a set of genomic coordinates.
-#' The meta-plot will be centered on the start position.  
+#' The meta-plot will be centered on the start position.
 #' There can be optional "ID" column for gene ids.
 #' @param reads A GRanges object representing a set of mapped reads.
-#' @param Lambda Measurement of assay noise.  Default: 0.04 reads/ kb in a 
-#' library of 10,751,533 mapped reads. (background computed in Core, 
+#' @param Lambda Measurement of assay noise.  Default: 0.04 reads/ kb in a
+#' library of 10,751,533 mapped reads. (background computed in Core,
 #' Waterfall, Lis. (2008) Science.).
-#' @param UnMap List object representing the position of un-mappable reads.  
+#' @param UnMap List object representing the position of un-mappable reads.
 #' Default: not used.
-#' @param debug If set to true, returns the number of positions.  
+#' @param debug If set to true, returns the number of positions.
 #' Default: FALSE.
 #' @param ... Extra argument passed to mclapply
-#' @return Returns a data.frame representing the expression p.values for 
+#' @return Returns a data.frame representing the expression p.values for
 #' features of interest.
-#' @author Charles G. Danko 
+#' @author Charles G. Danko
 #' @examples
 #' features <- GRanges("chr7", IRanges(2394474, 2420377), strand = "+",
 #'                     ID = "gene1")

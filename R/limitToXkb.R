@@ -21,9 +21,9 @@
 
 #' limitToXkb truncates a set of genomic itnervals at a constant, maximum size.
 #'
-#' @param features A GRanges object representing a set of genomic coordinates. 
+#' @param features A GRanges object representing a set of genomic coordinates.
 #' The meta-plot will be centered on the start position.
-#' @param offset Starts the interval from this position relative to the start 
+#' @param offset Starts the interval from this position relative to the start
 #' of each genomic features.
 #' @param size Specifies the size of the window.
 #' @return Returns GRanges object with new genomic coordiates.
@@ -61,20 +61,20 @@ limitToXkb <- function(features, offset=1000, size=13000) {
     return(features)
 }
 
-#' countMappableReadsInInterval counts the number of mappable reads in a set 
+#' countMappableReadsInInterval counts the number of mappable reads in a set
 #' of genomic features.
 #'
-#' Supports parallel processing using mclapply in the 'parallel' package.  
+#' Supports parallel processing using mclapply in the 'parallel' package.
 #' To change the number of processors, use the argument 'mc.cores'.
 #'
 #' @param features A GRanges object representing a set of genomic coordinates.
 #' The meta-plot will be centered on the start position.
-#' @param UnMap List object representing the position of un-mappable reads.  
+#' @param UnMap List object representing the position of un-mappable reads.
 #' Default: not used.
-#' @param debug If set to TRUE, provides additional print options. 
+#' @param debug If set to TRUE, provides additional print options.
 #' Default: FALSE
 #' @param ... Extra argument passed to mclapply
-#' @return Returns a vector of counts, each representing the number of reads 
+#' @return Returns a vector of counts, each representing the number of reads
 #' inside each genomic interval.
 #' @author Charles G. Danko and Minho Chae
 ##
@@ -168,10 +168,10 @@ countMappableReadsInInterval_foreachChrom <- function(i, C, features, UnMap) {
 
 
  
-#' readBed Returns a GenomicRanges object constrcuted from the specified bed 
+#' readBed Returns a GenomicRanges object constrcuted from the specified bed
 #' file.
 #'
-#' Bed file format is assumed to be either four column: seqnames, start, end, 
+#' Bed file format is assumed to be either four column: seqnames, start, end,
 #' strand columns; or six column: seqnames, start, end, name, score, and strand.
 #' Three column format is also possible when there is no strand information.
 #'

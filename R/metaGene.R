@@ -20,30 +20,30 @@
 ##########################################################################
 
 
-#' Returns a histogram of the number of reads in each section of a moving 
+#' Returns a histogram of the number of reads in each section of a moving
 #' window centered on a certain feature.
 #'
-#' Supports parallel processing using mclapply in the 'parallel' package.  
+#' Supports parallel processing using mclapply in the 'parallel' package.
 #' To change the number of processors, set the option 'mc.cores'.
 #'
 #' @param features A GRanges object representing a set of genomic coordinates.
 #' The meta-plot will be centered on the transcription start site (TSS)
-#' @param reads A GRanges object representing a set of mapped reads.  
+#' @param reads A GRanges object representing a set of mapped reads.
 #' Instead of 'reads', 'plusCVG' and 'minusCVG' can be used  Default: NULL
 #' @param plusCVG An IntegerRangesList object for reads with '+' strand.
 #' @param minusCVG An IntegerRangesList object for reads with '-' strand.
 #' @param size The size of the moving window.
-#' @param up Distance upstream of each features to align and histogram. 
+#' @param up Distance upstream of each features to align and histogram.
 #' Default: 10 kb.
-#' @param down Distance downstream of each features to align and histogram. 
+#' @param down Distance downstream of each features to align and histogram.
 #' If NULL, same as up. Default: NULL.
 #' @param ... Extra argument passed to mclapply
-#' @return Returns a integer-Rle representing the 'typical' signal 
+#' @return Returns a integer-Rle representing the 'typical' signal
 #' centered on a point of interest.
 #' @author Charles G. Danko and Minho Chae
 #' @examples
 #' features <- GRanges("chr7", IRanges(1000, 1000), strand="+")
-#' reads <- GRanges("chr7", IRanges(start=c(1000:1004, 1100), 
+#' reads <- GRanges("chr7", IRanges(start=c(1000:1004, 1100),
 #'  width=rep(1, 6)), strand="+")
 #' mg <- metaGene(features, reads, size=4, up=10)
 metaGene <- function(features, reads=NULL, plusCVG=NULL, minusCVG=NULL, 
@@ -95,23 +95,23 @@ metaGene_foreachChrom <- function(chrom, featureList, plusCVG, minusCVG,
 
 #' Runs metagene analysis for sense and antisense direction.
 #'
-#' Supports parallel processing using mclapply in the 'parallel' package.  
+#' Supports parallel processing using mclapply in the 'parallel' package.
 #' To change the number of processors, set the option 'mc.cores'.
 #'
-#' @param features GRanges A GRanges object representing a set of genomic 
+#' @param features GRanges A GRanges object representing a set of genomic
 #' coordinates, i.e., set of genes.
 #' @param reads GRanges of reads.
-#' @param anchorType Either 'TSS' or 'TTS'.  Metagene will be centered on the 
-#' transcription start site(TSS) or transcription termination site(TTS).  
+#' @param anchorType Either 'TSS' or 'TTS'.  Metagene will be centered on the
+#' transcription start site(TSS) or transcription termination site(TTS).
 #' Default: TSS.
 #' @param size Numeric.  The size of the moving window. Default: 100L
-#' @param normCounts Numeric.  Normalization vector such as average reads.  
+#' @param normCounts Numeric.  Normalization vector such as average reads.
 #' Default: 1L
 #' @param up Numeric. Distance upstream of each feature to align and histogram.
 #' Default: 1 kb
-#' @param down Numeric. Distance downstream of each feature to align and 
+#' @param down Numeric. Distance downstream of each feature to align and
 #' histogram.  If NULL, down is same as up. Default: NULL
-#' @param sampling Logical.  If TRUE, subsampling of Metagene is used.  
+#' @param sampling Logical.  If TRUE, subsampling of Metagene is used.
 #' Default: FALSE
 #' @param nSampling Numeric. Number of subsampling.  Default: 1000L
 #' @param samplingRatio Numeric. Ratio of sampling for features.  Default: 0.1
@@ -119,9 +119,9 @@ metaGene_foreachChrom <- function(chrom, featureList, plusCVG, minusCVG,
 #' @return A list of integer-Rle for sense and antisene.
 #' @author Minho Chae
 #' @examples
-#' features <- GRanges("chr7", IRanges(start=1000:1001, width=rep(1,2)), 
+#' features <- GRanges("chr7", IRanges(start=1000:1001, width=rep(1,2)),
 #'  strand=c("+", "-"))
-#' reads <- GRanges("chr7", IRanges(start=c(1000:1003, 1100:1101), 
+#' reads <- GRanges("chr7", IRanges(start=c(1000:1003, 1100:1101),
 #'  width=rep(1, 6)), strand=rep(c("+","-"), 3))
 #' ## Not run:
 #' # mg <- runMetaGene(features, reads, size=4, up=10)
@@ -198,22 +198,22 @@ samplingMetaGene <- function(features, plusCVG, minusCVG, size=100L, up=10000L,
 }
 
 
-#' Returns a matrix, with rows representing read counts across a specified 
+#' Returns a matrix, with rows representing read counts across a specified
 #' gene, or other features of interest.
 #'
-#' Supports parallel processing using mclapply in the 'parallel' package.  
+#' Supports parallel processing using mclapply in the 'parallel' package.
 #' To change the number of processors, use the argument 'mc.cores'.
 #'
-#' @param features A GRanges object representing a set of genomic coordinates. 
-#' @param reads A GRanges object representing a set of mapped reads. 
+#' @param features A GRanges object representing a set of genomic coordinates.
+#' @param reads A GRanges object representing a set of mapped reads.
 #' @param size The size of the moving window.
 #' @param up Distance upstream of each f to align and histogram Default: 1 kb.
-#' @param down Distance downstream of each f to align and histogram 
+#' @param down Distance downstream of each f to align and histogram
 #' Default: same as up.
-#' @param debug If set to TRUE, provides additional print options. 
+#' @param debug If set to TRUE, provides additional print options.
 #' Default: FALSE
 #' @param ... Extra argument passed to mclapply
-#' @return Returns a vector representing the 'typical' signal across 
+#' @return Returns a vector representing the 'typical' signal across
 #' genes of different length.
 #' @author Charles G. Danko and Minho Chae
 ##  Returns a matrix of counts.  Rows represent different streches of DNA.
@@ -294,19 +294,19 @@ metaGeneMatrix_foreachChrom <- function(i, C, features, reads, size, up, down,
 
 
 
-#' Returns a histogram of the number of reads in each section of a moving 
+#' Returns a histogram of the number of reads in each section of a moving
 #' window of #' variable size across genes.
 #'
-#' Supports parallel processing using mclapply in the 'parallel' package.  
+#' Supports parallel processing using mclapply in the 'parallel' package.
 #' To change the number of processors, use the argument 'mc.cores'.
 #'
-#' @param features A GRanges object representing a set of genomic coordinates. 
-#' @param reads A GRanges object representing a set of mapped reads. 
+#' @param features A GRanges object representing a set of genomic coordinates.
+#' @param reads A GRanges object representing a set of mapped reads.
 #' @param n_windows The number of windows to break genes into.
-#' @param debug If set to TRUE, provides additional print options. 
+#' @param debug If set to TRUE, provides additional print options.
 #' Default: FALSE
 #' @param ... Extra argument passed to mclapply
-#' @return Returns a vector representing the 'typical' signal across genes of 
+#' @return Returns a vector representing the 'typical' signal across genes of
 #' different length.
 #' @author Charles G. Danko and Minho Chae
 #' @examples
@@ -410,20 +410,20 @@ metaGene_nL <- function(features, reads, n_windows=1000, debug=FALSE, ...) {
 }
 
 
-#' Returns the average profile of tiling array probe intensity values or 
-#' wiggle-like count data centered on a set of genomic positions 
+#' Returns the average profile of tiling array probe intensity values or
+#' wiggle-like count data centered on a set of genomic positions
 #' (specified by 'Peaks').
 #'
-#' Supports parallel processing using mclapply in the 'parallel' package.  
+#' Supports parallel processing using mclapply in the 'parallel' package.
 #' To change the number of processors, use the argument 'mc.cores'.
 #'
-#' @param ProbeData Data.frame representing chromosome, window center, 
+#' @param ProbeData Data.frame representing chromosome, window center,
 #' and a value.
 #' @param Peaks Data.frame representing chromosome, and window center.
 #' @param size Numeric.  The size of the moving window. Default: 50 bp.
-#' @param bins The bins of the meta gene -- i.e. the number of moving windows 
+#' @param bins The bins of the meta gene -- i.e. the number of moving windows
 #' to break it into. Default +/- 1kb from center.
-#' @return A vector representing the 'typical' signal centered on the peaks of 
+#' @return A vector representing the 'typical' signal centered on the peaks of
 #' interest.
 #' @author Charles G. Danko and Minho Chae
 ##  Returns the average profile of tiling array probe intensity values or 

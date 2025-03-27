@@ -19,26 +19,26 @@
 ##
 ##########################################################################
 
-#' windowAnalysis Returns a vector of integers representing the counts of 
+#' windowAnalysis Returns a vector of integers representing the counts of
 #' reads in a moving window.
 #'
-#' Supports parallel processing using mclapply in the 'parallel' package.  
+#' Supports parallel processing using mclapply in the 'parallel' package.
 #' To change the number of processors, set the option 'mc.cores'.
 #'
-#' @param reads GenomicRanges object representing the position of reads 
+#' @param reads GenomicRanges object representing the position of reads
 #' mapping in the genome.
-#' @param strand Takes values of "+", "-", or "*".  "*" denotes collapsing 
+#' @param strand Takes values of "+", "-", or "*".  "*" denotes collapsing
 #' reads on both strands.  Default: "*".
-#' @param windowSize Size of the moving window. Either windowSize or 
+#' @param windowSize Size of the moving window. Either windowSize or
 #' stepSize must be specified.
 #' @param stepSize The number of bp moved with each step.
-#' @param chrom Chromosome for which to return data.  
+#' @param chrom Chromosome for which to return data.
 #' Default: returns all avaliable data.
-#' @param limitPCRDups Counts only one read mapping to each start site.  
-#' NOTE: If set to TRUE, assumes that all reads are the same length 
-#' (don't use for paired-end data).  Default: FALSE.  
+#' @param limitPCRDups Counts only one read mapping to each start site.
+#' NOTE: If set to TRUE, assumes that all reads are the same length
+#' (don't use for paired-end data).  Default: FALSE.
 #' @param ... Extra argument passed to mclapply
-#' @return Returns a list object, each element of which represents a 
+#' @return Returns a list object, each element of which represents a
 #' chromosome.
 #' @author Charles G. Danko and Minho Chae
 #' @examples

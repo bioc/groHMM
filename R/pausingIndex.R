@@ -54,10 +54,10 @@ approx.ratios.CI <- function(num.counts, denom.counts, alpha=0.05) {
   return(result)
 }
 
-#' Returns the pausing index for different genes.  TODO: DESCRIBE THE PAUSING 
+#' Returns the pausing index for different genes.  TODO: DESCRIBE THE PAUSING
 #' INDEX.
 #'
-#' Supports parallel processing using mclapply in the 'parallel' package.  
+#' Supports parallel processing using mclapply in the 'parallel' package.
 #' To change the number of processors, use the argument 'mc.cores'.
 #'
 #' @param features A GRanges object representing a set of genomic coordinates.

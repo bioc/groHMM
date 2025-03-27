@@ -21,34 +21,34 @@
 
 #' getTxDensity Calculates transcript density.
 #'
-#' Calculates transcript density for transcripts which overlapps with 
-#' annotations.  
-#' For 'run genes together' or 'broken up a single annotation' errors, 
+#' Calculates transcript density for transcripts which overlapps with
+#' annotations.
+#' For 'run genes together' or 'broken up a single annotation' errors,
 #' best overlapped transcripts or annotations are used.
 #'
-#' Supports parallel processing using mclapply in the 'parallel' package.  
+#' Supports parallel processing using mclapply in the 'parallel' package.
 #' To change the number of processors
 #' set the option 'mc.cores'.
 #'
-#' @param tx GRanges of transcripts. 
+#' @param tx GRanges of transcripts.
 #' @param annox GRanges of non-overlapping annotatoins.
 #' @param plot Logical.  If TRUE, plot transcript density.  Default: TRUE
-#' @param scale Numeric. Scaled size of a gene for transcript density 
-#' calculation. 
+#' @param scale Numeric. Scaled size of a gene for transcript density
+#' calculation.
 #' Default: 1000L
 #' @param nSampling Numeric. Number of subsampling.  Default: 0L
-#' @param samplingRatio Numeric. Ratio of sampling for annotations.  
+#' @param samplingRatio Numeric. Ratio of sampling for annotations.
 #' Default: 0.1
 #' @param ... Extra argument passed to mclapply.
-#' @return Returns a list of FTD, TTD, PostTTS, and TUA. 
+#' @return Returns a list of FTD, TTD, PostTTS, and TUA.
 #' @author Minho Chae
 #' @examples
-#' tx <- GRanges("chr7", IRanges(start=seq(1000,4000, by=1000), 
+#' tx <- GRanges("chr7", IRanges(start=seq(1000,4000, by=1000),
 #' width=seq(1000, 1300, by=100)), strand=rep("+", 4))
-#' annox <- GRanges("chr7", IRanges(start=seq(1100,4100, by=1000), 
+#' annox <- GRanges("chr7", IRanges(start=seq(1100,4100, by=1000),
 #' width=seq(900, 1200, by=100)), strand=rep("+", 4))
 #' ## Not run:
-#' # density <- getTxDensity(tx, annox) 
+#' # density <- getTxDensity(tx, annox)
 getTxDensity <- function(tx, annox, plot=TRUE, scale=1000L, nSampling=0L, 
     samplingRatio=0.1, ...) {
     ol <- findOverlaps(tx, annox)
@@ -209,19 +209,19 @@ getLIValues <- function (vals, n) {
 
 
 
-#' evaluateHMM Evaluates HMM calling. 
+#' evaluateHMM Evaluates HMM calling.
 #'
-#' Evaluates HMM calling of transripts compared to known annotations. 
+#' Evaluates HMM calling of transripts compared to known annotations.
 #'
-#' @param tx GRanges of transcripts predicted by HMM. 
+#' @param tx GRanges of transcripts predicted by HMM.
 #' @param annox GRanges of non-overlapping annotatoins.
-#' @return a list of error information; merged annotations, dissociated annotation, 
+#' @return a list of error information; merged annotations, dissociated annotation,
 #' total, and rate.
 #' @author Minho Chae
 #' @examples
-#' tx <- GRanges("chr7", IRanges(start=seq(100, 1000, by=200), 
+#' tx <- GRanges("chr7", IRanges(start=seq(100, 1000, by=200),
 #' width=seq(100, 1000, by=100)), strand="+")
-#' annox <- GRanges("chr7", IRanges(start=seq(110, 1100, by=150), 
+#' annox <- GRanges("chr7", IRanges(start=seq(110, 1100, by=150),
 #' width=seq(100, 1000, by=150)), strand="+")
 #' error <- evaluateHMMInAnnotations(tx, annox)
 evaluateHMMInAnnotations <- function (tx, annox) {
