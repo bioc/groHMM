@@ -271,8 +271,8 @@ extern void SStatsGamma_p1(int state, int emis_indx, void* ss, fwbk_t fwbk) {
 }
 extern void UpdateGamma(int state, void* ss, hmm_t *hmm) {
   ssGamma *SS = (ssGamma*)ss;
-  double *shape= (double*)Calloc(1, double);
-  double *scale= (double*)Calloc(1, double);
+  double *shape= (double*)R_Calloc(1, double);
+  double *scale= (double*)R_Calloc(1, double);
   int updateRetVal= MLEGamma(SS[0].N, SS[0].sumPiXi, SS[0].sumLogPiXi, 
                         shape, scale);
   if(updateRetVal == 0) {
@@ -284,8 +284,8 @@ extern void UpdateGamma(int state, void* ss, hmm_t *hmm) {
         due to instibility!  Using Shape: %f; Scale: %f\n", 
         state, hmm[0].em_args[state][0], hmm[0].em_args[state][1]);
   }
-  Free(shape); 
-  Free(scale);
+  R_Free(shape);
+  R_Free(scale);
 }
 // Used to fit a constrained gamma, where E[x] = 1, and shape=1/scale.
 extern void UpdateGamma_SHAPEeq1overSCALE(int state, void* ss, hmm_t *hmm) {
