@@ -8,12 +8,15 @@ Authors@R: c(person("Charles G.", "Danko", role = c("aut"),
                 email="minho.chae@gmail.com"),
             person("Andre", "Martins", role = c("ctb"),
                 email="alm253@cornell.edu"),
-            person("W. Lee", "Kraus", role = c("aut"),
+            person("W. Lee", "Kraus", role = c("aut", "fnd"),
                 email="lee.kraus@utsouthwestern.edu"),
 	    person("Anusha", "Nagari", role = c("ctb"),
-                email="anusha.nagari@utsouthwestern.edu"))
-Author: Charles G. Danko, Minho Chae, Andre Martins, W. Lee Kraus
-Maintainer: Tulip Nandu <tulip.nandu@utsouthwestern.edu>, W. Lee Kraus <lee.kraus@utsouthwestern.edu>
+                email="anusha.nagari@utsouthwestern.edu"),
+	    person("Tulip", "Nandu", role = c("cre", "ctb"),
+                email="tulip.nandu@utsouthwestern.edu"),
+	    person("Pariksheet", "Nanda", role = c("ctb"),
+                email="pan79@pitt.edu",
+		comment = c(ORCID = "0000-0001-9726-4552")))
 Depends:
     R (>= 3.0.2), MASS,
     parallel,
